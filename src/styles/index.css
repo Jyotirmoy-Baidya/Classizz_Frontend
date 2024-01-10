@@ -1,0 +1,19 @@
+/* src/styles/index.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+@media (min-width:1600px) {
+    .class-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

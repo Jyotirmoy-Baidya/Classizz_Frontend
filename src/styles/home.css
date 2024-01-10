@@ -1,0 +1,11 @@
+.home-username {}
+
+.home-class-block {
+    /* font-family: sans-serif; */
+}
+
+@media (min-width:1600px) {
+    .class-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}

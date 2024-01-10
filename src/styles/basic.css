@@ -1,0 +1,7 @@
+@media (max-width: 980px) {
+    .header-profile {
+        display: none;
+    }
+}
+
+.header-profile {}
