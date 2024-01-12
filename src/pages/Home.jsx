@@ -14,7 +14,7 @@ const userName = "Jyotirmoy";
 
 const quiz = [{ name: "Science Quiz", class: "CSE1", color: "bg-orange-100", active: true, marks: 20 }, { name: "Maths Quiz", class: "CSE3", color: `bg-teal-100`, active: true, marks: 30 }, { name: "Hindi Quiz", class: "CSE2", color: `bg-teal-500`, active: false, marks: 10 }]
 
-const role = "student";
+const role = "teacher";
 
 
 const Home = () => {
@@ -31,20 +31,12 @@ const Home = () => {
                     {
                         role === "teacher" ?
                             <>
-                                <div onClick={() => setType(0)}>
-                                    <ToggleButton text="Own" active={type === 0 ? true : false} />
-                                </div>
-                                <div onClick={() => setType(1)}>
-                                    <ToggleButton text="Institution" active={type == 1 ? true : false} />
-                                </div>
+                                <ToggleButton text="Own" active={type === 0 ? true : false} onClick={() => setType(0)} />
+                                <ToggleButton text="Institution" active={type == 1 ? true : false} onClick={() => setType(1)} />
                             </> :
                             <>
-                                <div onClick={() => setType(0)}>
-                                    <ToggleButton text="Classes" active={type === 0 ? true : false} />
-                                </div>
-                                <div onClick={() => setType(1)}>
-                                    <ToggleButton text="Active Quiz" active={type == 1 ? true : false} />
-                                </div>
+                                <ToggleButton text="Classes" active={type === 0 ? true : false} onClick={() => setType(0)} />
+                                <ToggleButton text="Active Quiz" active={type == 1 ? true : false} onClick={() => setType(1)} />
                             </>
                     }
                 </div>
@@ -61,20 +53,12 @@ const Home = () => {
                     {
                         role === "teacher" ?
                             <>
-                                <div onClick={() => setType(0)}>
-                                    <ToggleButton text="Own" active={type === 0 ? true : false} />
-                                </div>
-                                <div onClick={() => setType(1)}>
-                                    <ToggleButton text="Institution" active={type == 1 ? true : false} />
-                                </div>
+                                <ToggleButton text="Own" active={type === 0 ? true : false} onClick={() => setType(0)} />
+                                <ToggleButton text="Institution" active={type == 1 ? true : false} onClick={() => setType(1)} />
                             </> :
                             <>
-                                <div onClick={() => setType(0)}>
-                                    <ToggleButton text="Classes" active={type === 0 ? true : false} />
-                                </div>
-                                <div onClick={() => setType(1)}>
-                                    <ToggleButton text="Active Quiz" active={type == 1 ? true : false} />
-                                </div>
+                                <ToggleButton text="Classes" active={type === 0 ? true : false} onClick={() => setType(0)} />
+                                <ToggleButton text="Active Quiz" active={type == 1 ? true : false} onClick={() => setType(1)} />
                             </>
                     }
                 </div>
