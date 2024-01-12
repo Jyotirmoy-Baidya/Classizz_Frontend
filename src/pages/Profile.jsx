@@ -1,8 +1,10 @@
 const username = "Jyotirmoy"
 const email = "jb@gmail.com"
 const role = 'teacher'
-
+import { SignOutButton, SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react"
+import { useNavigate } from "react-router-dom"
 const Profile = () => {
+    const navigate=useNavigate();
     return (
         <div className="bg-grey-200 dark:bg-slate-800 max-h-home lg:max-h-full grow">
             <div className="flex p-9 gap-5 border-b-2 profile-details">
@@ -11,6 +13,7 @@ const Profile = () => {
                 </figure>
                 <div className="h-4/12 w-1/2 flex flex-col justify-evenly gap-3 text-sm text-slate-900 dark:text-slate-100 tracking-widest">
                     <div className="profile-name">
+                        <SignOutButton onClick={()=>navigate("/")}/>
                         <p className="m-1">Name</p>
                         <p className="text-xm bg-slate-200  dark:text-slate-900 w-full rounded-md p-2">{username}</p>
                     </div>
