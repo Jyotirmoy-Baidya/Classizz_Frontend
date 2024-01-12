@@ -6,14 +6,14 @@ import Header from "./components/basics/Header";
 import AddPage from "./pages/AddPage";
 import { SignOutButton, SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react"
 
-
+const isLogin=true;
 function App() {
   return (
     <>
       <BrowserRouter>
         {
-          <>
-          <SignedIn>
+          
+          isLogin?
             <div className="flex flex-col h-screen">
               <Header />
               <Routes>
@@ -28,17 +28,20 @@ function App() {
               </Routes>
               <Navs />
             </div> 
-            </SignedIn>
-            <SignedOut>
+         
             
-              <Routes>
+            
+             
+             : <Routes>
                 <Route path="*" element={<SignInButton />} />
               </Routes>
             
-            </SignedOut>
-            </>
+            
+          
+         
         }
       </BrowserRouter>
+       
     </>
   )
 }
