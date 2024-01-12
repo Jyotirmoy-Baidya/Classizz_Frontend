@@ -5,9 +5,7 @@ import Home from "./pages/home";
 import Header from "./components/basics/Header";
 import AddPage from "./pages/AddPage";
 import { SignOutButton, SignInButton, SignedIn, SignedOut } from "@clerk/clerk-react"
-import { useUser,useAuth } from "@clerk/clerk-react"
 
-const loggedIn = false;
 
 function App() {
   return (
