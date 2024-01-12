@@ -11,7 +11,6 @@ const ClassBlock = ({ content }) => {
                 <div className="text-4xl text-slate-700" ><MdGroups3 /></div>
                 <div className="font-medium tracking-wider">{content.noOfStudents}</div>
             </div>
-
         </div >
     )
 }

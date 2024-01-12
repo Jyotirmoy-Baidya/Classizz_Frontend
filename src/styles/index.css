@@ -7,10 +7,21 @@
     display: none;
 }
 
+.home-page::-webkit-scrollbar {
+    display: none;
+}
+
+.class-blocks-home::-webkit-scrollbar {
+    display: none;
+}
+
 button {
     cursor: pointer;
 }
 
+.remove-scrollbar::-webkit-scrollbar {
+    display: none;
+}
 
 @media (min-width:1600px) {
     .class-list {
