@@ -16,17 +16,23 @@ const loggedIn = false;
 
 // const checkUserExistsURL = `${import.meta.env.BACKEND_URL}/user/alreadyexist`;
 const checkUserExistsURL = "https://classizz-backend.onrender.com/user/alreadyexist"
-const email = "jyotirmoybaidya408@gmail.com";
+// const email = "jyotirmoybaidya408@gmail.com";
 function App() {
   const { user, session, isSessionLoading } = useUser();
   const { isLoaded, isSignedIn } = useAuth();
+  const [loading, setLoading] = useState(1);
   const [role, setRole] = useState(false);
 
   const checkUserExists = async () => {
     try {
-      const a = await axios.get(`${checkUserExistsURL}/${email}`);
-      console.log(a);
-      setRole(a.data);
+      if (user) {
+        const a = await axios.get(`${checkUserExistsURL}/${user.primaryEmailAddress.emailAddress}`);
+        if (a) {
+          setLoading(0);
+        }
+        console.log(user);
+        setRole(a.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -34,48 +40,52 @@ function App() {
 
   useEffect(() => {
     checkUserExists();
-  }, [])
+  }, [user])
 
   return (
     <>
       <BrowserRouter>
         {
-          <>
-            <SignedIn>
-              {
-                !role ?
-                  <div className="flex flex-col h-screen">
-                    <Routes>
-                      <Route path="*" element={<AddRolePage email={"jb@gmail.com"} username={"Java Doodle"} />} />
-                    </Routes>
-                  </div>
-                  :
-                  <div className="flex flex-col h-screen">
-                    <Header />
-                    <Routes>
-                      <>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/addClass/student" element={<AddPage teacher={false} />} />
-                        <Route path="/addClass/student/:code" element={<AddPage teacher={false} />} />
-                        <Route path="/addClass/teacher" element={<AddPage teacher={true} />} />
-                        <Route path="/addClass/teacher/:code" element={<AddPage teacher={true} t={1} />} />
-                        <Route path="/profile" element={<Profile />} />
-                      </>
-                    </Routes>
-                    <Navs />
-                  </div>
-              }
-            </SignedIn>
-            <SignedOut>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                {/* <Route path="*" element={ } /> */}
+          loading ?
+            <Routes>
+              <Route path="*" element={<h1>Loading...</h1>} />
+            </Routes> :
+            <>
+              <SignedIn>
+                {
+                  !role ?
+                    <div className="flex flex-col h-screen">
+                      <Routes>
+                        <Route path="*" element={<AddRolePage email={user?.primaryEmailAddress.emailAddress} username={user?.username} checkUser={checkUserExists} />} />
+                      </Routes>
+                    </div>
+                    :
+                    <div className="flex flex-col h-screen">
+                      <Header />
+                      <Routes>
+                        <>
+                          <Route path="/" element={<Home />} />
+                          <Route path="/addClass/student" element={<AddPage teacher={false} />} />
+                          <Route path="/addClass/student/:code" element={<AddPage teacher={false} />} />
+                          <Route path="/addClass/teacher" element={<AddPage teacher={true} />} />
+                          <Route path="/addClass/teacher/:code" element={<AddPage teacher={true} t={1} />} />
+                          <Route path="/profile" element={<Profile />} />
+                        </>
+                      </Routes>
+                      <Navs />
+                    </div>
+                }
+              </SignedIn>
+              <SignedOut>
+                <Routes>
+                  <Route path="*" element={<LandingPage />} />
+                  {/* <Route path="*" element={ } /> */}
 
-                {/* <Route path="/" element={<SignInButton />} /> */}
-              </Routes>
+                  {/* <Route path="/" element={<SignInButton />} /> */}
+                </Routes>
 
-            </SignedOut>
-          </>
+              </SignedOut>
+            </>
         }
       </BrowserRouter>
     </>

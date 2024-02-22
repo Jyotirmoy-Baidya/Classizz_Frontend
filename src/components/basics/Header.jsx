@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaRegBell } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -11,7 +11,11 @@ const Header = () => {
     const location = useLocation();
     console.log(location);
 
+    const [notification, setNotification] = useState(false);
 
+    const closeNotification = () => {
+        setNotification(false);
+    }
 
     return (
         <div className="flex items-center justify-between bg-teal-100 dark:bg-slate-800 text-slate-900 dark:text-teal-50 p-4 border-b-2 border-slate-900 dark:border-slate-200 sm:h-r lg:h-auto header">
@@ -20,7 +24,7 @@ const Header = () => {
                 <Flowbite>
                     <DarkThemeToggle />
                 </Flowbite>
-                <div className="text-2xl p-2 relative notification-btn"><FaRegBell />
+                <div className="text-2xl p-2 relative notification-btn" onClick={() => setNotification(true)}><FaRegBell />
                     <div className="absolute top-0 right-1 text-sm font-bold text-red-600 notification-count">3</div>
                 </div>
                 <NavLink className="hidden lg:block header-profile" to="/profile">
@@ -31,7 +35,7 @@ const Header = () => {
                     }
                 </NavLink>
             </div>
-            <NotificationPop active={true} />
+            <NotificationPop active={notification} closePop={closeNotification} />
         </div>
     )
 }

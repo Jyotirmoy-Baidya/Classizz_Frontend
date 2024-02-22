@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 const createUserURL = "https://classizz-backend.onrender.com"
 // ${ createUserURL } /student/createstudent
 
-const AddRolePage = ({ email, username }) => {
+const AddRolePage = ({ email, username, checkUser }) => {
     const [type, setType] = useState(3);
+    const [name, setName] = useState(username);
     const navigate = useNavigate();
     const createUser = async () => {
         try {
@@ -17,21 +18,26 @@ const AddRolePage = ({ email, username }) => {
             }
             else {
                 if (type == 0) {
-                    const a = await axios.post(`http://localhost:8001/student/createstudent`, JSON.stringify({
-                        email: "abc@gmail.com",
-                        name: "Java Doodle"
-                    }));
-                    console.log("ss");
+                    const a = await axios.post(`${createUserURL}/student/createstudent`, JSON.stringify({
+                        email: email,
+                        name: name
+                    }), {
+                        headers: { "Content-type": "application/json" },
+                        withCredentials: true,
+                    });
                     console.log(a);
                 }
                 else {
                     const a = await axios.post(`${createUserURL}/teacher/createteacher`, JSON.stringify({
-                        email: "abc@gmail.com",
-                        name: "Java Doodle"
-                    }));
+                        email: email,
+                        name: name
+                    }), {
+                        headers: { "Content-type": "application/json" },
+                        withCredentials: true,
+                    });
                     console.log(a);
                 }
-
+                checkUser();
             }
         } catch (error) {
             console.log(error)
