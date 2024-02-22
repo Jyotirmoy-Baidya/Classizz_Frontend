@@ -28,3 +28,102 @@ button {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+
+@keyframes gradientColorChange {
+    0% {
+        background: linear-gradient(45deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    10% {
+        background: linear-gradient(85deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    20% {
+        background: linear-gradient(125deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    30% {
+        background: linear-gradient(165deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    40% {
+        background: linear-gradient(205deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    50% {
+        background: linear-gradient(245deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    60% {
+        background: linear-gradient(285deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    70% {
+        background: linear-gradient(325deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    80% {
+        background: linear-gradient(5deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    90% {
+        background: linear-gradient(45deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    100% {
+        background: linear-gradient(261deg, #ff7300, #e400ff, #c8ff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+.website-name {
+    animation: gradientColorChange 2s infinite ease-in-out;
+    /* Animation name duration timing-function iteration-count */
+}
+
+.signed-in-landing-btn {
+    animation: gradientColorChange 2s infinite ease-in-out;
+}

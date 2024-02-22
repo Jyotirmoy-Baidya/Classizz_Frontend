@@ -4,11 +4,15 @@ import { NavLink, useLocation } from "react-router-dom";
 
 
 import { DarkThemeToggle, Flowbite } from 'flowbite-react';
+import NotificationPop from "./NotificationPop";
 // import "../../styles/basic.css"
 
 const Header = () => {
     const location = useLocation();
     console.log(location);
+
+
+
     return (
         <div className="flex items-center justify-between bg-teal-100 dark:bg-slate-800 text-slate-900 dark:text-teal-50 p-4 border-b-2 border-slate-900 dark:border-slate-200 sm:h-r lg:h-auto header">
             <div className="text-4xl tracking-wider title">Classizz</div>
@@ -27,6 +31,7 @@ const Header = () => {
                     }
                 </NavLink>
             </div>
+            <NotificationPop active={true} />
         </div>
     )
 }
